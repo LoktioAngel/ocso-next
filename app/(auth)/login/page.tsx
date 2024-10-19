@@ -11,9 +11,15 @@ export default function LoginPage() {
     let authData: any = {};
     authData.userEmail = formData.get("userEmail");
     authData.userPassword = formData.get("userPassword");
-    const { data } = await axios.post(`${API_URL}/auth/login`, {
-      ...authData,
-    });
+    const { data } = await axios.post(
+      `${API_URL}/auth/login`,
+      {
+        ...authData,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     console.log(data);
     return;
   };
