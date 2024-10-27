@@ -5,6 +5,8 @@ import FormNewLocation from "./_components/FormNewLocation";
 import DeleteLocationBotton from "./_components/DeleteLocationButton";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Location } from "@/entities";
+import UpdateLocation from "./_components/UpdateLocation";
+import FormUpdateLocation from "./_components/FormUpdateLocation";
 
 const LocationsPage = async ({
   searchParams,
@@ -47,6 +49,9 @@ const LocationsPage = async ({
         </div>
         <div>
           <DeleteLocationBotton store={searchParams.store} />
+          <UpdateLocation>
+            <FormUpdateLocation store={searchParams.store} />
+          </UpdateLocation>
         </div>
       </div>
     </div>

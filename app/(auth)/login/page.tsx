@@ -16,14 +16,14 @@ export default function LoginPage() {
     let authData: any = {};
     authData.userEmail = formData.get("userEmail");
     authData.userPassword = formData.get("userPassword");
-
+    console.log(authData);
     try {
       const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         body: JSON.stringify(authData),
         credentials: "include",
       });
-
+      console.log(response);
       if (response.status === 201) router.push("/dashboard");
 
       setSubmitting(false);
