@@ -18,18 +18,23 @@ export default function LoginPage() {
     authData.userPassword = formData.get("userPassword");
     console.log(authData);
     try {
+      console.log("entro");
       const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(authData),
         credentials: "include",
       });
-      console.log(response);
       if (response.status === 201) router.push("/dashboard");
 
       setSubmitting(false);
     } catch (e) {
+      console.log("error pa");
       setSubmitting(false);
     }
+    return;
   };
 
   return (
