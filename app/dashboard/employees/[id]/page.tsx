@@ -1,8 +1,6 @@
 import { API_URL } from "@/constants";
-import EmployeeCard from "../_components/EmployeeCard";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Employee } from "@/entities";
-import { Image } from "@nextui-org/react";
 import FormUpdateEmployee from "./_components/FormUpdateEmployee";
 import EmployeeDataCard from "./_components/EmployeeDataCard";
 
@@ -16,7 +14,6 @@ export default async function EmployeePage({
       ...authHeaders(),
     },
   });
-
   const employee: Employee = await responseEmployee.json();
   return (
     <div className="w-full h-[90vh] flex flex-row items-center justify-center">

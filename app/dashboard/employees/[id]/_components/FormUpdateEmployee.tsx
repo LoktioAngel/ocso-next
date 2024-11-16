@@ -1,13 +1,22 @@
-import { Employee } from "@/entities";
 import updateEmployee from "@/actions/employees/update";
+import { Employee, Location } from "@/entities";
 import { Button, Input } from "@nextui-org/react";
-export default function FormUpdateEmployee({
+import SelectLocations from "../../_components/SelectLocation";
+import { API_URL } from "@/constants";
+import { authHeaders } from "@/helpers/authHeaders";
+export default async function FormUpdateEmployee({
   employee,
 }: {
   employee: Employee;
 }) {
   const { employeeId } = employee;
   const updateEmployeeById = updateEmployee.bind(null, employeeId);
+  const responseLocations = await fetch(`${API_URL}/locations`, {
+    headers: {
+      ...authHeaders(),
+    },
+  });
+  const locations = await responseLocations.json();
   return (
     <form
       action={updateEmployeeById}
@@ -37,6 +46,10 @@ export default function FormUpdateEmployee({
         type="file"
         name="employeePhoto"
         defaultValue={employee.employeePhoto}
+      />
+      <SelectLocations
+        stores={locations}
+        defaultStore={employee.location?.locationId}
       />
       <Button type="submit" color="primary">
         Actualizar datos
