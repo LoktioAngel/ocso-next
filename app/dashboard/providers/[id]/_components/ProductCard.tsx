@@ -1,6 +1,5 @@
 import { Product } from "@/entities";
 import { Card, CardHeader, CardBody, Divider } from "@nextui-org/react";
-
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Card className="max-w-[350px]">
